@@ -387,7 +387,9 @@ Two flow starts on page 03 Screens: **Boarding** (Language → Sign-in → Home 
 
 ## Redlines — home screen (S-01)
 
-<figure class="redline"><img src="../06-handoff/redlines-home.png" alt="Redlines of the Home screen: 64 px top bar, 242 px status hero, 318 px content, 176 px action band; 24 px gutters; token and style references for every element"><figcaption>Home redlines · spacing, sizes, tokens and text styles for every element · Figma page 07</figcaption></figure>
+<figure class="redline"><div class="window"><img class="top" src="../06-handoff/redlines-home.png" alt="Redlines of the Home screen, upper half: 64 px top bar, 242 px status hero, 24 px gutters, token and style references"></div><figcaption>Home redlines 1 / 2 · top bar, status hero, content — spacing, sizes, tokens and text styles · Figma page 07</figcaption></figure>
+
+<figure class="redline"><div class="window"><img class="bottom" src="../06-handoff/redlines-home.png" alt="Redlines of the Home screen, lower half: 318 px content, 176 px action band with 56 px buttons and SOS bar, colour values and style references"></div><figcaption>Home redlines 2 / 2 · action band, SOS bar, colour and style reference footer</figcaption></figure>
 
 </section>
 

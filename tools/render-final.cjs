@@ -62,16 +62,19 @@ thead { display: table-header-group; }
 .cover h3 { margin-top: 10mm; }
 .cover ol { font-size: 10pt; columns: 2; }
 figure { margin: 2mm 0 4mm; break-inside: avoid; page-break-inside: avoid; }
-figure img { display: block; width: 100%; height: auto; border: 0.25mm solid #D5DDD8; }
+figure img { display: block; width: auto; max-width: 100%; max-height: 225mm; height: auto; margin: 0 auto; border: 0.25mm solid #D5DDD8; }
 figcaption { font-size: 8.5pt; color: #3A4A40; line-height: 1.3; margin-top: 1mm; }
-figure.wide { width: 100%; }
+figure.wide img { width: 100%; }
 figure.half { width: 60%; }
-figure.sketch { width: 100%; }
-figure.sketch img { max-height: 190mm; width: auto; max-width: 100%; margin: 0 auto; }
-figure.redline img { width: 100%; }
+figure.sketch img { max-height: 200mm; }
+/* redlines board is 1400x2704: show as two 1400x1352 windows at full width */
+figure.redline .window { position: relative; overflow: hidden; width: 182mm; height: 175.8mm; border: 0.25mm solid #D5DDD8; }
+figure.redline .window img { position: absolute; left: 0; width: 182mm; max-width: none; max-height: none; height: auto; border: 0; }
+figure.redline .window img.top { top: 0; }
+figure.redline .window img.bottom { top: -175.8mm; }
 .row { display: flex; gap: 3.5mm; align-items: flex-start; margin: 1mm 0 3mm; break-inside: avoid; page-break-inside: avoid; }
 .row figure { flex: 1 1 0; margin: 0; }
-.row figure img { width: 100%; }
+.row figure img { width: 100%; max-height: none; }
 .row.small figure { flex: 1 1 0; }
 .row.small figcaption { text-align: center; }
 .handoff { font-size: 9.5pt; line-height: 1.35; }
@@ -98,6 +101,16 @@ figure.redline img { width: 100%; }
     fs.writeFileSync(output, pdf);
     fs.writeFileSync(output.replace(/\.pdf$/, ".html"), html);
     const doc = await tools.pdfjs.getDocument({ data: new Uint8Array(pdf), isEvalSupported: false }).promise;
-    console.log(JSON.stringify({ output, pages: doc.numPages, bytes: pdf.length, images: count, horizontalOverflowElements: overflow }));
+    const pages = [];
+    for (let n = 1; n <= doc.numPages; n++) {
+      const pg = await doc.getPage(n);
+      const text = (await pg.getTextContent()).items.map(i => i.str).join(" ").trim();
+      const ops = await pg.getOperatorList();
+      const imgs = ops.fnArray.filter(f => f === tools.pdfjs.OPS.paintImageXObject || f === tools.pdfjs.OPS.paintInlineImageXObject).length;
+      pages.push({ n, chars: text.length, imgs });
+    }
+    // footer alone is ~70 chars; anything under 120 with no image is effectively blank
+    const blank = pages.filter(p => p.imgs === 0 && p.chars < 120).map(p => p.n);
+    console.log(JSON.stringify({ output, pages: doc.numPages, bytes: pdf.length, images: count, horizontalOverflowElements: overflow, blankPages: blank, perPage: pages.map(p => `${p.n}:${p.chars}c/${p.imgs}i`).join(" ") }));
   } finally { await browser.close(); }
 })().catch(e => { console.error(e.stack); process.exit(1); });
