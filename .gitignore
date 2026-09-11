@@ -1,0 +1,15 @@
+# Agent working files and organiser material - not part of the submission
+HANDOFF.md
+SPRINT-OPS.md
+SPRINT-OPS.pdf
+SUBMISSION.md
+checklist.md
+review/
+.impeccable/
+debug.log
+*.log
+*.pdf.txt
+CARNIVAL 8.0 *.pdf
+UI-UX_ Carnival 8.0*.pdf
+submission/
+tools/prototype-clickthrough.cjs
