@@ -96,6 +96,7 @@ figure.redline img { width: 100%; }
       headerTemplate: "<div></div>",
       footerTemplate: '<div style="font:8pt \'Segoe UI\',sans-serif;width:100%;margin:0 14mm;color:#3A4A40;display:flex;justify-content:space-between"><span>GreenCommute · Mohammed Tayeb · Team Lonewolf · AUST CSE Carnival 8.0</span><span><span class="pageNumber"></span> / <span class="totalPages"></span></span></div>' });
     fs.writeFileSync(output, pdf);
+    fs.writeFileSync(output.replace(/\.pdf$/, ".html"), html);
     const doc = await tools.pdfjs.getDocument({ data: new Uint8Array(pdf), isEvalSupported: false }).promise;
     console.log(JSON.stringify({ output, pages: doc.numPages, bytes: pdf.length, images: count, horizontalOverflowElements: overflow }));
   } finally { await browser.close(); }
