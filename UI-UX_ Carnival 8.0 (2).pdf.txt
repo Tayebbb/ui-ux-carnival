@@ -1,0 +1,284 @@
+UI / UX DESIGN SPRINT 
+RULEBOOK 
+A six-phase, six-hour product-design sprint. Read
+this before you register. 
+11 SEPTEMBER · 5–11 PM ONLINE · SINGLE 6-HOUR ROUND 
+ORGANIZED BY   SUPPORTED BY 
+
+===== PAGE 1 =====
+
+01 — WELCOME 
+Dear participants 
+This rulebook is essential for ensuring a fair and successful experience for all. By thoroughly
+reading and understanding these guidelines, you will help maintain the event's integrity and
+ensure equal opportunities for all. Please take the time to review this document carefully.
+Carnival 8.0's UI/UX competition runs on a structured product-design pipeline. Every team
+works through six phases — understand, research, plan, design, tidy up, and hand off —
+inside a single 6-hour window. 
+WHY IT IS BUILT THIS WAY 
+The goal is to make sure every participant practices how professional UI/UX work
+actually happens, not just how to make one screen look polished. 
+Each phase has its own time limit and its own required output, so how you work
+is judged alongside the final design. 
+6 
+phases 
+6 
+hours, one sitting 
+1–3 
+members per team 
+AUST CSE CARNIVAL 8.0 — UI/UX DESIGN SPRINT   02 
+
+===== PAGE 2 =====
+
+02 — PRIZE POOL 
+Prize pool 
+CHAMPION 2,500   BDT 
+1ST RUNNERS-UP   1,500   BDT 
+2ND RUNNERS-UP   1,000   BDT 
+Total prize pool of 5,000 BDT across the top three participants. 
+AUST CSE CARNIVAL 8.0 — UI/UX DESIGN SPRINT   03 
+
+===== PAGE 3 =====
+
+03 — SCHEDULE, REGISTRATION & TEAMS 
+Before the sprint 
+EVENT SCHEDULE 
+Registration deadline 
+7 September 2026 
+Event date 
+11 September 2026 
+Single online round, 5:00
+PM – 11:00 PM 
+Contest window 
+6 hours 
+One continuous sitting 
+ABOUT REGISTRATION 
+Registration fee No registration fee 
+Open to all current AUST students, any department.
+Cross-department teams are allowed.
+If anyone makes a mistake during registration, they must inform the organizers
+about cancelling that registration before registering again. 
+TEAM REQUIREMENTS 
+1–3 
+members per team 
+A team consists of 1–3 members.
+Cross-department teams are allowed to participate. 
+AUST CSE CARNIVAL 8.0 — UI/UX DESIGN SPRINT   04 
+
+===== PAGE 4 =====
+
+04 — AT A GLANCE 
+The 6-phase, 6-hour sprint 
+1 
+Understand the Problem 
+A one-page brief: problem, users, goals, limits   
+00:00 – 00:40   40 min 
+2 
+Research Your Users 
+Notes on what you learned from the scenario 
+00:40 – 01:20   40 min 
+3 
+Plan the Structure 
+Sitemap or flow diagram of the app's main sections 
+01:20 – 02:10   50 min 
+4 
+Design the Screens 
+Finished-looking screens for the whole main journey 
+02:10 – 03:40   90 min 
+5 
+Build a Clean Design File 
+Tidy design file that resizes cleanly 
+03:40 – 04:50   70 min 
+6 
+Prototype & Handoff 
+Clickable prototype link 
+04:50 – 05:40   50 min 
+— 
+Time to Submit 
+Upload your final package to the submission form 
+05:40 – 06:00   20 min 
+AUST CSE CARNIVAL 8.0 — UI/UX DESIGN SPRINT   05 
+
+===== PAGE 5 =====
+
+05 — PHASES 1 & 2 
+Understand & research 
+1 Understand the Problem 
+00:00 – 00:40 · 40 MIN 
+Turn the released theme into a clear problem statement before you touch a single screen. 
+REQUIRED DELIVERABLE 
+A one-page brief: the problem, who it is for, the goals, and the limits
+3–5 user stories (“As a [user], I want [goal], so that [benefit]”), each with 1–2 ways to
+tell it is done
+1–2 rough user profiles — you will check these in Phase 2, so they need not be final 
+Tools:  Optional. ChatGPT, Claude, or a plain notebook all work equally well here. 
+Tip.  This step is graded on its own. A vague brief costs you time in every phase after it. 
+2 Research Your Users 
+00:40 – 01:20 · 40 MIN 
+Do your research using the scenario released with the theme. There are no real users to
+interview in a timed contest, so the scenario stands in for them. 
+REQUIRED DELIVERABLE 
+A short write-up of what you learned from the scenario — done however you like
+An updated user profile — change your Phase 1 guess based on what the
+scenario shows
+3–5 main problems or insights you found in it 
+How this works.  A written scenario is released at the start of Phase 2. Work through it
+yourselves, with or without AI, inside the 40 minutes. 
+Tip.  Treat it as real information, not filler — judges will check that your later decisions
+come from it. 
+AUST CSE CARNIVAL 8.0 — UI/UX DESIGN SPRINT   06 
+
+===== PAGE 6 =====
+
+06 — PHASES 3 & 4 
+Plan & design 
+3 Plan the Structure 
+01:20 – 02:10 · 50 MIN 
+Structure the product before you touch visual design. 
+REQUIRED DELIVERABLE 
+A sitemap or flow diagram of the app's main sections
+Rough wireframes (photos of hand sketches are fine) for the 3–5 main screens in your
+user stories 
+Tools:  Optional — Relume, Google Stitch, Figma low-fi frames, or pen and paper. 
+Tip.  Judges want wireframes that clearly match a user story, not pretty ones. 
+4 Design the Screens 
+02:10 – 03:40 · 90 MIN 
+Turn your structure into a real, full-colour flow. 
+REQUIRED DELIVERABLE 
+Finished-looking screens for the whole main journey from Phases 1–3, not just a
+home screen
+A short note: how does each screen serve a user story or fix a problem from Phase 2? 
+Tools:  Optional — Figma, Adobe XD, Flowstep AI, or any design tool you're comfortable
+with. 
+Tip.  This is the single most heavily weighted phase. Protect this time block; don't let
+Phase 1–3 run long into it. 
+AUST CSE CARNIVAL 8.0 — UI/UX DESIGN SPRINT   07 
+
+===== PAGE 7 =====
+
+07 — PHASES 5 & 6 
+Tidy up & hand off 
+5 Build a Clean Design File 
+03:40 – 04:50 · 70 MIN 
+Make your file tidy enough for a developer to pick up. 
+REQUIRED DELIVERABLE 
+A final design file that uses auto-layout so it resizes cleanly
+A written-down colour palette and font set, with a short reason for each choice
+Real text in every screen — no lorem ipsum — and the theme's logo used
+Basic accessibility notes: colour contrast, alt text, and any other accessibility choices
+you made 
+Tools:  Optional — Figma plus plugins, or Adobe XD. 
+Tip.  This is what separates a student file from a portfolio-ready one. Make your existing
+screens consistent instead of adding new ones. 
+6 Prototype & Handoff 
+04:50 – 05:40 · 50 MIN 
+Package your work the way a designer hands it to a developer or a client. 
+REQUIRED DELIVERABLE 
+A clickable prototype link (Figma prototype, Claude Artifacts, or similar)
+A one-page handoff note: main flows, open questions, and what a developer needs
+to know 
+Tip.  A prototype that does not click through end to end counts as incomplete, even if the
+screens look great. 
+05:40 – 06:00 · Time to submit — 20 min. Late uploads are not accepted. 
+AUST CSE CARNIVAL 8.0 — UI/UX DESIGN SPRINT   08 
+
+===== PAGE 8 =====
+
+08 — TOOLS POLICY 
+AI is optional, your thinking is 
+not 
+AI tools are optional at every phase, including Phase 2. Teams are free to complete the
+entire sprint with traditional tools — pen and paper, Figma alone, manual research notes —
+if they prefer.
+The Phase 2 scenario stands in for the real users you would normally talk to. How you work
+through it is up to you. 
+If you use AI, we still expect to see your own thinking. Your prompts, edits,
+and decisions are what get judged — not the raw output of a tool. 
+SUGGESTED, NEVER REQUIRED 
+Phase 1 ChatGPT, Claude, or a plain notebook 
+Phase 2 Any AI, or your own notes 
+Phase 3 Relume, Google Stitch, Figma low-fi, pen and paper 
+Phase 4 Figma, Adobe XD, Flowstep AI 
+Phase 5 Figma plus plugins, or Adobe XD 
+Phase 6 Figma prototyping, Claude Artifacts 
+AUST CSE CARNIVAL 8.0 — UI/UX DESIGN SPRINT   09 
+
+===== PAGE 9 =====
+
+09 — SUBMISSION REQUIREMENTS 
+One package, six phases 
+Submit one package containing the outputs of all six phases through the official submission
+form before the end of the buffer window.  Late uploads are not accepted. 
+Phase 1   Brief document + user stories + rough user profiles 
+Phase 2   Research notes from the scenario + updated user profile + list of
+problems 
+Phase 3   Sitemap + rough wireframes (images or PDF) 
+Phase 4   Finished screens for the whole main journey + your note 
+Phase 5   Final Figma (or Adobe XD) file link, view access enabled 
+Phase 6   Clickable prototype link + one-page handoff note 
+AUST CSE CARNIVAL 8.0 — UI/UX DESIGN SPRINT   10 
+
+===== PAGE 10 =====
+
+10 — JUDGING RUBRIC 
+How you are scored 
+Brief & User Stories 
+Is the problem clear? Are the user stories specific and checkable?   
+10% 
+Research & User Profile 
+Did you really use the scenario? Did your user profile and problem list change
+from Phase 1 to 2? 
+15% 
+Structure & Wireframes 
+Do the sitemap and wireframes clearly match the user stories?   
+15% 
+Screen Design 
+How good the screens look, and whether the whole journey is covered — not
+one hero screen. 
+25% 
+Design File Quality 
+Auto-layout, consistent colours and fonts, real text, no placeholders.   
+15% 
+Prototype & Handoff 
+Does the prototype click through end to end? Can someone else use your
+handoff note? 
+10% 
+Accessibility & Usability 
+Contrast, alt text, and other accessibility choices are written down, not just
+claimed. 
+10% 
+AUST CSE CARNIVAL 8.0 — UI/UX DESIGN SPRINT   11 
+
+===== PAGE 11 =====
+
+11 — GENERAL RULES & GUIDELINES 
+The hard lines 
+01 
+The theme/brief is released at the start of the contest window and must
+be followed. 
+02 
+All work must be original and produced by the registered team within the
+contest window — no pre-made templates from before the event. 
+03 
+AI is allowed under the Tools Policy, but you must be able to explain any
+design decision if a judge asks. 
+04 
+Plagiarism or use of someone else's uncredited work results
+in  disqualification . 
+05 
+Entries must comply with the theme and guidelines set by the organizers. 
+AUST CSE CARNIVAL 8.0 — UI/UX DESIGN SPRINT   12 
+
+===== PAGE 12 =====
+
+12 — CONTACT 
+For queries 
+Md. Rubayet Islam 
+01620929190 
+Ma-Huan Sheikh Meem 
+01533514667 
+Organizers reserve the right to make final decisions and alter rules at
+any point during the event. 
+ORGANIZED BY   SUPPORTED BY 
+
+===== PAGE 13 =====

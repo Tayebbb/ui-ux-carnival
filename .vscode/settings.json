@@ -1,0 +1,22 @@
+{
+  // User settings map *.md to "bat" + formatOnSave — that breaks Markdown PDF and has mangled files before. Override for this workspace only.
+  "files.associations": {
+    "*.md": "markdown"
+  },
+  "editor.formatOnSave": false,
+  "[markdown]": {
+    "editor.formatOnSave": false,
+    "editor.wordWrap": "on"
+  },
+
+  // Markdown PDF (yzane.markdown-pdf): use installed Edge instead of downloading Chromium.
+  "markdown-pdf.executablePath": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+  "markdown-pdf.type": ["pdf"],
+  "markdown-pdf.format": "A4",
+  "markdown-pdf.displayHeaderFooter": false,
+  "markdown-pdf.margin.top": "1.5cm",
+  "markdown-pdf.margin.bottom": "1.5cm",
+  "markdown-pdf.margin.left": "1.5cm",
+  "markdown-pdf.margin.right": "1.5cm",
+  "markdown-pdf.convertOnSave": false
+}
