@@ -6,7 +6,7 @@ AUST CSE Carnival 8.0 | UI/UX Design Sprint | 11 September 2026
 
 **Product:** GreenCommute, a staff-bus companion proposed for GreenTex Apparel's garment workers in Gazipur.
 
-[Figma design](https://www.figma.com/design/aWSZZboavo5bIt92qFQnsz) | [Boarding prototype](https://www.figma.com/proto/aWSZZboavo5bIt92qFQnsz?page-id=5%3A4&node-id=30-642&starting-point-node-id=30%3A642&scaling=scale-down) | [SOS prototype](https://www.figma.com/proto/aWSZZboavo5bIt92qFQnsz?page-id=5%3A4&node-id=29-646&starting-point-node-id=29%3A646&scaling=scale-down)
+[Figma design](https://www.figma.com/design/aWSZZboavo5bIt92qFQnsz) | [Language/boarding](https://www.figma.com/proto/aWSZZboavo5bIt92qFQnsz?page-id=5%3A4&node-id=30-642&starting-point-node-id=30%3A642&scaling=scale-down) | [Transit/SOS](https://www.figma.com/proto/aWSZZboavo5bIt92qFQnsz?page-id=5%3A4&node-id=29-646&starting-point-node-id=29%3A646&scaling=scale-down) | [Full](https://www.figma.com/proto/aWSZZboavo5bIt92qFQnsz?page-id=5%3A4&node-id=27-229&starting-point-node-id=27%3A229&scaling=scale-down) | [Offline](https://www.figma.com/proto/aWSZZboavo5bIt92qFQnsz?page-id=5%3A4&node-id=27-322&starting-point-node-id=27%3A322&scaling=scale-down)
 
 ## 1. The Design Argument
 
@@ -16,7 +16,7 @@ The client pack asks for an Uber-like map, QR payment, English-first presentatio
 
 Our direction was a **departure board in the worker's hand**: a prominent time or state, a clear next action, and supporting details in predictable positions. This is a design hypothesis motivated by stakeholder evidence, not a claim that a field study proved the layout superior.
 
-This document consolidates all 22 recorded decisions and the documented refinements. It explains intent and tradeoffs; it does not certify production readiness, current prototype behaviour or successful submission. The original [DECISIONS.md](DECISIONS.md) preserves the decision history. Later qualifications, especially DL-18 through DL-22, supersede conflicting earlier descriptions.
+This document consolidates all 23 recorded decisions and the documented refinements. It explains intent, tradeoffs and snapshot-qualified checks; it does not certify production readiness, behaviour after later edits or successful submission. The original [DECISIONS.md](DECISIONS.md) preserves the decision history. Later qualifications, especially DL-18 through DL-23, supersede conflicting earlier descriptions.
 
 ## 2. Evidence And Its Limits
 
@@ -55,7 +55,7 @@ Phase 2 sharpened the worker profile around departure and wait/next-bus decision
 
 **Alternative and tradeoff:** a schematic-only substitute left the sponsor's geographic-map request unresolved. An optional map addresses that gap without making Home map-first. The basemap uses [OpenStreetMap data and attribution](https://www.openstreetmap.org/copyright); the route overlay, bus positions and times remain illustrative. Production still needs an approved vehicle-location source, operator-verified route/stop data, freshness rules, a map provider and appropriate caching rights. No live GPS, exact-location guarantee or map SDK is delivered by this Figma prototype.
 
-**Verification boundary:** recorded Figma checks cover Map/Stops navigation, origin-preserving return, offline-aware SOS entry and twelve 320/360/412 px English/Bangla layout proofs. The independent finish reviewer scored the four reported visual fixes resolved. These checks do not establish browser/Android runtime behaviour, worker comprehension, sponsor acceptance or production readiness. See the canonical [DL-23 entry](DECISIONS.md#dl-23--optional-geographic-map-status-first-home) and [screen notes](04-screens/screen-notes.md).
+**Verification boundary:** recorded Figma checks cover Map/Stops navigation, origin-preserving return, offline-aware SOS entry and twelve 320/360/412 px English/Bangla layout proofs. The independent finish reviewer scored the four reported visual fixes resolved. The later 22:38 Dhaka coordinator report records browser passes for Map/Stops returns from Arrived, Full, Offline and the 320/412 px Home proofs, plus scoped SOS cancellation. These checks do not establish native Android behaviour, worker comprehension, sponsor acceptance or production readiness. See the canonical [DL-23 entry](DECISIONS.md#dl-23--optional-geographic-map-status-first-home), [screen notes](04-screens/screen-notes.md) and the dated verification in section 10.
 
 ### DL-10. Route And Stop Context, With Conditional Next-Bus Information
 
@@ -71,7 +71,7 @@ Phase 2 sharpened the worker profile around departure and wait/next-bus decision
 
 **Decision and reason:** use Home as the hub, with Balance and Route directly accessible, contextual boarding, and direct returns from secondary screens. Reserve the lower action area for the task and SOS rather than a permanent navigation catalogue.
 
-**Alternative and tradeoff:** a Home/Route/Balance tab bar consumes persistent space; a drawer hides choices. Hub-and-spoke navigation is expected to reduce choice, but its superiority and actual reachability require testing. No More destination was added for speculative features.
+**Alternative and tradeoff:** a Home/Route/Balance tab bar consumes persistent space; a drawer hides choices. Hub-and-spoke navigation is expected to reduce choice. Scoped return paths passed the 22:38 browser replay; comparative usability and every possible navigation path remain unverified. No More destination was added for speculative features.
 
 ## 4. Decisions: Boarding And Money
 
@@ -87,7 +87,7 @@ Phase 2 sharpened the worker profile around departure and wait/next-bus decision
 
 **Problem and evidence:** rain, sweat and crowding make extra actions undesirable (E-02/E-03).
 
-**Decision and reason:** target automatic submission on digit four, with backspace and explicit feedback, rather than requiring a further Confirm tap. The aim is fewer controls at the boarding moment.
+**Decision and reason:** submit on digit four with backspace and explicit feedback rather than a further Confirm tap. Current demo invalid fourth-digit submissions increment failures; a full rejected code accepts a fresh first digit while preserving the count. Coordinator replay covered all digits, correction and retry; fewer controls remains the rationale, not measured boarding speed.
 
 **Alternative and tradeoff:** an explicit Confirm button offers another review point but adds an action. Auto-submit must still distinguish incomplete entry, invalid/expired code and unavailable validation. Stale cache must not be presented as the worker typing incorrectly. Completion speed, wet-screen accuracy and accessible input remain test targets; a prototype shortcut is not proof of production validation.
 
@@ -95,7 +95,7 @@ Phase 2 sharpened the worker profile around departure and wait/next-bus decision
 
 **Problem and evidence:** damaged devices and camera limitations are reported; repeated code errors and a dead phone are plausible, not measured events. E-01 makes lateness a business concern.
 
-**Decision and reason:** after a proposed three unsuccessful attempts, expose an assistance path instead of an unexplained terminal error. Showing the screen to the driver is an assistance request, not a paid ticket or entitlement to admission.
+**Decision and reason:** the current demo opens assistance after the third invalid fourth-digit submission. Assistance Retry/Back clears active boarding slots, length and failures; Back preserves Offline Home when offline, otherwise Arrived. Showing the screen to the driver is an assistance request, not a paid ticket or entitlement to admission.
 
 **Alternative and tradeoff:** indefinite lockout leaves no next action. Automatic admission would invent authority. The driver process, dead-phone alternative and reconciliation require U-6 approval; a screen cannot itself solve a dead phone.
 
@@ -123,15 +123,15 @@ Phase 2 sharpened the worker profile around departure and wait/next-bus decision
 
 **Problem and evidence:** E-01 proposes police email; E-03 rejects that channel and names the security gate with the bus number.
 
-**Decision and reason:** route the proposed incident to factory security. Include bus number, worker reference, timestamp, unique alert ID and available location with age/accuracy. Use a deliberate hold with quiet feedback; avoid automatically informing the driver because the nature of the threat is unknown.
+**Decision and reason:** route the proposed incident to factory security. Include bus number, worker reference, timestamp, unique alert ID and available location with age/accuracy. The original deliberate-hold proposal sought quiet, intentional activation; the current prototype instead uses a tap followed by a cancellable five-second demo countdown. Avoid automatically informing the driver because the nature of the threat is unknown.
 
-**Alternative and tradeoff:** police email contradicts HR's account; an audible alarm or automatic driver alert may disclose the request. Quiet feedback does not ensure screen privacy, and a hold may be harder on wet screens. The approximately two-second hold is a design target, not a proven accidental-trigger threshold. Staffing, channel and response authority remain U-7/U-9.
+**Alternative and tradeoff:** police email contradicts HR's account; an audible alarm or automatic driver alert may disclose the request. Quiet feedback does not ensure screen privacy, and a hold may be harder on wet screens. The earlier approximately two-second hold remains an untested native-interaction proposal, not the demonstrated activation contract or a proven accidental-trigger threshold. Staffing, channel and response authority remain U-7/U-9.
 
 ### DL-18. Separate Sending, Delivery, Acknowledgement And Response
 
 **Decision and reason:** **Sending** means an attempt is underway; **Not sent** means no successful transmission; **Delivered** requires channel receipt; **Acknowledged** requires a gate response. None means help has arrived. Reuse one alert ID through retries and fallback channels. Request help without waiting for GPS, and disclose unavailable or stale location.
 
-**Alternative and tradeoff:** instant Security notified or a timer-driven success message would overstate what the system knows. A cancellation after delivery is an update to the same incident, not deletion or recall. Confirm active-alert cancellation; cancelling a hold before transmission is a different action. No three-second delivery or help-arrival guarantee is made. Figma simulates these states and sends no real emergency messages.
+**Alternative and tradeoff:** instant Security notified or a timer-driven success message would overstate what the system knows. A cancellation after delivery is an update to the same incident, not deletion or recall. Confirm active-alert cancellation; cancelling the prototype countdown before transmission is a different action. No three-second delivery or help-arrival guarantee is made. Figma simulates these states and sends no real emergency messages.
 
 ### DL-05. Dated Cache And Small Updates, With Conditional SMS
 
@@ -195,16 +195,16 @@ These implementation choices are documented in the [screen notes](04-screens/scr
 
 | Choice or refinement | Why it was made | Qualification |
 | --- | --- | --- |
-| Named primitive and semantic variables; reusable Button, Status, Key, Banner, SOS, Top bar and Tile components | Keep spacing, colour and state behaviour consistent; make developer mapping and later corrections systematic. | Historical component/style counts are snapshots, not a fresh inventory of the final file. |
-| Large contextual actions, keypad targets and persistent SOS on key journey screens | Support the reported damaged/wet-screen context and inferred one-handed operation. | Latest design-system notes record the language-chip master and 32 checked page-03 instances at 122 x 56 px, correcting the earlier 40 px warning. Native targets and assistive-technology order still need runtime verification. |
+| Named variables; reusable Button, Status, Key, Banner, SOS, Top bar and Tile components | Keep spacing, colour and state behaviour consistent. | Parent-supplied Button baseline is 16 variants: four kinds × Default/Pressed/Disabled/Focus. A Focus design is not keyboard verification; earlier component/style counts remain snapshots. |
+| Large contextual actions, keypad targets and persistent SOS | Support reported damaged/wet-screen conditions and inferred one-handed use. | Current chip is 116 x 56 px, fixed EN/বাংলা segments, EN minimum 48 px. The coordinator found no targets below 48 design px; native access is unverified. Parent-reported 72 x 72/minimum-48 key masters differ from the older saved recovery report; see the design-system source qualifier. |
 | Full, Arrived and Delayed variants in the same Home structure | Explain the next action without forcing the worker to learn another layout. | Replacement buses and current estimates require service evidence; illustrative screen values are not operational facts. |
 | Stronger Coming and Full foreground colours; SOS ring contrast repair | Address recorded low-contrast combinations while preserving identity. | Contrast tables document selected pairs, not whole-product WCAG certification. |
 | Compact tickets: worker name/ID, balance, wrapping payment text, aligned bottom actions | Reduce repeated instructions and avoid clipping while preserving payment meaning. | Later ticket checks recorded zero containment failures at English 360/320 and Bangla 320; not a full device or payment test. |
-| Ticket navigation retained while redundant timer explanation was removed | Reduce visual repetition without changing the recorded navigation. | A timer never establishes boarding or payment; automatic progression still needs usability review. |
-| Locale-bound copy and fonts, exactly one language-selection indicator | Make the chosen language visible and preserve script rendering through the journey. | Recorded text/layout checks do not equal a full browser replay, native translation review or audio implementation. |
+| Explicit ticket CTA to Transit; no root auto-timer on paid `29:551` | Keep payment status visible until the worker chooses to continue. | Historical 20-second automatic progression is SUPERSEDED for this demo; neither the CTA nor a mock receipt proves admission or real payment. |
+| Locale-bound copy and fonts, exactly one language-selection indicator | Make the chosen language visible and preserve script rendering through the journey. | Text/layout checks and the bounded 22:38 Bangla-first browser journey passed. These do not establish all-screen locale coverage, native translation review or audio implementation. |
 | Redlines rebuilt into readable, auto-height annotation columns | Make spacing, type, tokens and implementation detail inspectable by developers. | Annotated copies are documentation, not additional prototype destinations. |
-| SOS text containment and header-alignment repairs | Keep the status, payload and actions readable without weakening safety wording. | Latest screen/design-system notes record 28/18/16 px title/status/disclosure roles, a 12 px detail gap and passing containment checks at English 360/320 and Bangla 320. These scoped records and the 21:28 coordination note supersede historical pending typography notes, not the outstanding interaction replay. |
-| Brief state transitions instead of decorative animation | Direct attention to a meaningful change and keep the operational task central. | Low-end runtime performance, reduced motion and hold interaction require testing. |
+| SOS text containment and header-alignment repairs | Keep the status, payload and actions readable without weakening safety wording. | Recorded checks cover 28/18/16 px title/status/disclosure roles, a 12 px detail gap and containment at English 360/320 and Bangla 320. Layout repairs and the later 22:38 scoped SOS browser passes supersede earlier pending typography/replay notes; native interaction remains unverified. |
+| Brief state transitions instead of decorative animation | Direct attention to a meaningful change and keep the operational task central. | Low-end runtime performance, reduced motion and native press-and-hold remain unverified. |
 
 ## 7. Decisions: Scope, Roles And Account Access
 
@@ -234,7 +234,7 @@ These implementation choices are documented in the [screen notes](04-screens/scr
 
 **Problem:** the earlier language-to-Home path exposed a sample personalised account without representing account ownership. A worker ID or shared bus code is not sufficient authentication.
 
-**Decision and reason:** the later authorised design adds company-provisioned worker ID and password before personalised Home, with masked entry, Show/Hide, credential-manager/autofill/paste support as implementation requirements, and visible assisted setup/recovery. Session continuity is opt-in for personal devices, not automatic on shared phones. First/new-device sign-in requires connectivity; offline failure does not grant access.
+**Decision and reason:** the later authorised design adds company-provisioned worker ID and password before personalised Home, with Show/Hide and opt-in personal-phone continuity. Credential-manager/autofill/paste and identity-verified recovery remain implementation requirements. Six A-series frames simulate sample input/checking/results/help/sign-out, not native authentication. Coordinator reports bounded browser PASS; offline/service/throttled branches are separately seeded-action checks without visible chooser selectors. Sign-out Stay/header use `BACK` without the earlier Balance-confirmation loop; confirmation clears auth demo state only, preserving payment/route/SOS state.
 
 **Alternatives and tradeoffs:** SMS-only depends on phone ownership and delivery that are unknown. Passkeys remain a future supported-device option, not something categorically impossible on inexpensive Android. A shared door code or short remote PIN alone is rejected as an account credential. Passwords add a real recall/typing burden; assisted enrolment and recovery require both security checks and usability testing. No public self-registration or role picker is added.
 
@@ -246,7 +246,7 @@ These implementation choices are documented in the [screen notes](04-screens/scr
 
 ### DL-19. Keep Evidence, Assumptions And Approved Scope Separate
 
-**Decision and reason:** retain five prioritised problems with unmeasured frequency; label illustrative profiles and journey values; preserve approved optional QR, language access, schematic and worker navigation. Keep grace, staffing, assignment and connectivity questions open instead of turning plausible operations into facts.
+**Decision and reason:** retain five prioritised problems with unmeasured frequency; label illustrative profiles and journey values; preserve approved optional QR, language access, geographic Map/Stops (DL-23) and worker navigation. Keep grace, staffing, assignment and connectivity questions open instead of turning plausible operations into facts.
 
 **Alternative and tradeoff:** stronger-sounding claims would be easier to present but less defensible. Entrant approval selects a design direction; it does not equal client approval of credit, security staffing, telemetry or the map compromise.
 
@@ -266,21 +266,21 @@ These implementation choices are documented in the [screen notes](04-screens/scr
 | US-4: request help discreetly with honest progress | DL-03, DL-18 | SOS access; S-05 activation; S-06 status |
 | US-5: understand confirmed funds and pending requests | DL-12, DL-18 | Home balance, S-03 ticket, S-07 balance |
 | US-6: give the intended gate receiver enough incident context | DL-09, DL-18, DL-21 | Worker-facing SOS status plus proposed receiving contract; no staff UI |
-| Sponsor: English presentation and route context | DL-01, DL-04, DL-07 | S-09 language, shared identity, S-08 schematic |
-| Account ownership before personal information | DL-22 | Later S-10 sign-in and assistance/recovery design; runtime service absent |
+| Sponsor: English presentation and route context | DL-01, DL-04, DL-07, DL-23 | S-09 language, shared identity, S-08 geographic Map and S-08b Stops |
+| Account ownership before personal information | DL-22 | Six A-series screens: A-01 sign-in, A-02 help, A-03 demo credentials, A-04 checking, A-01e result and A-05 sign-out confirmation; authentication service absent |
 | Requested fleet safety capability | DL-13, DL-21 | Proposed service appendix, not delivered detection |
 
-The [structure document](03-structure/structure.md) contains the sitemap, boarding/SOS flow specifications, screen inventory, wireframe descriptions and rejected map-first Home. Earlier diagrams predate DL-22: the current intended entry sequence is **Language > Sign in > personalised Home**, not direct access after language selection. Their existence does not certify that every later addition has a matching updated wireframe or export.
+The [structure document](03-structure/structure.md) contains the active sitemap/flows and inventory. Current first-launch entry is **Language > A-01 > A-04 > personalised Home only after valid sample success**; old direct entry and S-10 auth labels are historical. All auth destinations are top-level frames, not native inputs or overlays. Its existing appendix maps all six auth sources using band `169:3787` and board `211:1815`; that static coverage does not certify export freshness after later edits.
 
 ## 10. What This Submission Does And Does Not Establish
 
-**Design coverage:** the documents describe waiting variants, typed and optional scanned boarding, pending/paid tickets, in-transit, SOS, balance, route and language, with a later authentication addition. The Figma file, exported screens and prototype demonstrate design work; backend operations are not deployed.
+**Design coverage:** the documents describe waiting variants, typed and optional scanned boarding, pending/paid tickets, in-transit, SOS, balance, geographic Map/Stops and language, with six later A-series authentication screens. The Figma file, exported screens and prototype demonstrate design work; backend operations are not deployed.
 
-**Recorded checks:** prior sessions documented selected contrast measurements, text/style/variable audits, language bindings, responsive containment checks, ticket repairs and redlines. Counts and dimensions refer to their specific snapshots. Concurrent later changes mean they are not a blanket certification of the final file. Whole-flow replay, logged-out access and export freshness need a final independent check.
+**Recorded checks:** selected contrast, text/style/variable, language, containment, ticket and redline checks remain snapshot-specific. The [22:38 Dhaka coordinator report](review/prototype-repair-coordination.md#browser-repair-continuation-11-september-2238-dhaka) records browser passes for boarding and error/assistance recovery, scanner controls, offline Pending recovery, Balance/Map/Stops returns, SOS cancellation/recovery and delivery-versus-acknowledgement states, and sample sign-in/sign-out. A bounded Bangla-first journey also passed. Saved-action checks are model evidence, not additional browser tests. These recorded passes supersede older browser-blocked notes; they are not new tests performed for this rationale or blanket certification after concurrent edits. Anonymous link access, full keyboard/screen-reader access, every locale/device combination and final export freshness remain unverified here.
 
-**Known documentary drift:** some earlier screen and handoff descriptions still contain direct language-to-Home navigation, timed payment/SOS success, universal hero-size claims or older screen counts. Read those as historical descriptions. DL-18 governs payment/SOS truthfulness; DL-22 governs intended authentication; later ticket refinements govern their 64 px headings. Brief section 4.3 qualifies earlier rides-left arithmetic and establishes proposed payment-continuity gates. Phase 4's description of Full as routine and its LCD/light-theme superiority claim are not supported by measured frequency or panel evidence. This rationale does not retroactively claim every screen and exported page was synchronised.
+**Current structural snapshot:** the coordinator reports 32 S/A frames including permanent width proofs, 197 interactive nodes, 454 visible texts, 152 icon/mark candidates and zero detected structural/current-mode failures. This is not 32 distinct product screens or proof that every control works on every device/locale. Source documents now qualify old direct-entry, hold, automatic-ticket, ride-count and screen-count wording; historical logs and generated exports are not rewritten by this pass. DL-18/22/23 and brief FARE-1–5 govern current interpretation. Final exports/package remain with the parent; no scores are recalculated.
 
-**SOS presentation under reconciliation:** the packaging checkpoint records two Cancel-labelled controls on S-05 whose actions were not inspected, and a Home safety-check action that differs from the redlines' press/hold and two-second description. The [prototype coordination record](review/prototype-repair-coordination.md) assigns cancellation/navigation repairs and preserves a five-second simulated countdown. These records show an evolving interaction and documentation discrepancy, not a final verified failure or completed integration. The deliberate-hold description above preserves the logged decision history; the settled activation contract and final cancellation behaviour require reconciliation and replay. No timer establishes real delivery.
+**Current SOS prototype contract:** tap starts a five-second countdown with explicit Cancel, no hold required; Sending waits 1.5 seconds. `Online retry · demo` simulates network recovery; no actual call, GPS or SMS. Coordinator browser PASS covers Cancel from all twelve origins, Map-to-Sending cancellation and active-alert cancellation/review, preserving Delivered versus Acknowledged. Earlier blocked/hold notes are SUPERSEDED for that scope; native gesture safety remains unverified. API timing is seconds, also Home 4, auth Checking 0.9 and result 60 (throttle release only); paid ticket has no root auto-timer. No timer proves real payment, delivery or help arrival.
 
 **Real content, not fabricated research:** the screens use task-specific illustrative copy rather than filler text. Illustrative people, money, routes and times are not production records. No measured reduction in waiting, lateness, boarding time, distress or emergency response is claimed.
 
@@ -295,6 +295,7 @@ The [structure document](03-structure/structure.md) contains the sitemap, boardi
 | U-8: return commute | Determine whether a second journey must be designed. |
 | U-12: vehicle telemetry, thresholds, privacy and permissions | Establish whether a reviewable fleet-safety service is feasible and authorised. |
 | U-13/U-14: sponsor acceptance of route view and current worker practices | Resolve the map compromise and establish a baseline against which to test improvement. |
+| U-15: credential issuance/recovery, private password-setting, support, revocable sessions and cached access | Client approval and live security/device testing remain necessary; sample auth and sign-out are not account isolation or secure storage. |
 
 Suggested validation is a supervised pilot of departure/status comprehension, keypad/scan recovery, pending-payment reconciliation, SOS delivery versus acknowledgement comprehension, authentication/recovery and shared-device use. Include realistic device, language and connectivity conditions without generating live emergency messages unintentionally. Measure task completion, assistance needed, errors and service evidence; compare waiting/lateness only against an established baseline. These are proposed next steps, not tests completed during the sprint.
 
@@ -302,6 +303,6 @@ Suggested validation is a supervised pilot of departure/status comprehension, ke
 
 The evidence trail is retained in [01-understand/brief.md](01-understand/brief.md), [02-research/research.md](02-research/research.md), [03-structure/structure.md](03-structure/structure.md), [04-screens/screen-notes.md](04-screens/screen-notes.md), [05-design-file/design-system-and-accessibility.md](05-design-file/design-system-and-accessibility.md), [06-handoff/handoff.md](06-handoff/handoff.md), and [DECISIONS.md](DECISIONS.md). The developer note and redlines carry implementation handoff; this document provides the consolidated rationale.
 
-GreenCommute's mark is original. Icons are credited to Lucide; fonts to Archivo, Inter and Noto Sans Bengali under their recorded licences. GitHub Copilot assisted with drafting, Figma construction and technical auditing. Design judgement and the submitted work remain the entrant's responsibility. AI assistance is not presented as independent user research.
+GreenCommute's mark is original. Icons: Lucide, ISC; fonts: Archivo, Inter and Noto Sans Bengali, SIL Open Font License. Geographic basemap: © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright), ODbL; route and vehicle overlays are illustrative, not GPS. Production provider/caching rights remain open. GitHub Copilot assisted with drafting, Figma construction and technical auditing; no underlying model identity is inferred. Design judgement and submitted work remain the entrant's responsibility. AI assistance is not independent user research.
 
 **Closing position:** we prioritised actionable commute information, a non-camera boarding path and honest safety/payment states while preserving the sponsor's English default and secondary route context. Where the pack did not establish a policy, service or user capability, we documented the dependency rather than claiming certainty. That is the rationale for the design, and the boundary of what the sprint demonstrates.

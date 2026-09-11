@@ -1,6 +1,8 @@
 # GreenCommute — Phase 3 · Information Architecture & Low-fi
 
-Phase 3 window 18:20–19:10 · Structure derived from Phase 1 requirements/C1–C10 and Phase 2 scenario synthesis. Existing screen IDs and phase context are retained; current qualifications are in DECISIONS DL-18–20. All flows, screen specifications and interaction criteria below are **targets [D]**, not claims of delivered/verified prototypes. Historical Figma destinations: `01 Flow & Sitemap` and `02 Wireframes`; their current contents, links and exports require parent QA. This document verifies none of them and prescribes no identity/theme redesign.
+Phase 3 window 18:20–19:10 · Structure derived from Phase 1 requirements/C1–C10 and Phase 2 scenario synthesis. Existing screen IDs and phase context are retained; current qualifications are in [DECISIONS.md](../DECISIONS.md), DL-18–23. Production interaction criteria remain **targets [D]**; current demo routes below incorporate later supplied evidence without backdating it. Historical Figma destinations: `01 Flow & Sitemap` and `02 Wireframes`. No identity/theme redesign is prescribed.
+
+**Current baseline, 11 September 2026:** the [22:38 Dhaka coordinator snapshot](../review/prototype-repair-coordination.md) reports bounded browser PASS, not tests performed by this documentation pass or field research. Its 32 S/A frames include permanent width proofs: 197 interactive nodes, 454 visible texts, 152 icon/mark candidates and zero detected structural/current-mode failures. These counts are not 32 unique product screens or all-device/locale certification. Auth low-fi coverage is mapped in §9; keyboard/TalkBack, anonymous sharing, real services and refreshed package evidence remain separate gates.
 
 ## 0. Pattern references and proposals — index only
 
@@ -19,22 +21,25 @@ Principle carried into Phase 4 [D]: **preserve GreenCommute's approved identity 
 
 ## 1. Information architecture
 
-Approved hub-and-spoke structure retained [D]: **Home is the app**, with direct Balance/Route access and Back; no tab bar (DL-14). Reduced navigation choice and reserved SOS space are rationale [I], not a tested comparison. The diagram specifies target reachability, not verified links.
+Approved hub-and-spoke structure retained [D]: **Home is the app**, with direct Balance/Route access and Back; no tab bar (DL-14). Reduced navigation choice and reserved SOS space are rationale [I], not a tested comparison. The diagram distinguishes current demo routes from notification/service targets.
 
-```
+```text
 GreenCommute (worker app)
 │
 ├── First launch  ·  S-09 Language (English pre-selected · immediate বাংলা/audio switch)  →  A-01 Sign in
-│     ├── Worker ID + password → successful simulated check → S-01
-│     └── A-02 Sign-in help → A-01; no pretend reset
+│     ├── Sample fields / saved entry → A-03 fixed demo chooser → A-01
+│     ├── Sign in → A-04 Checking (0.9 s) → S-01 only on valid sample success
+│     ├── Failed check → A-01e result → Retry A-01 / Help A-02; no access
+│     └── A-02 Sign-in help → A-01; no pretend reset; helpers are top-level frames
 │
 ├── S-01 HOME · My bus — the WAITING state
 │     states: Coming (ETA)  ·  Full → next bus  ·  Arrived / boarding now  ·  Delayed  ·  banner: Updated hh:mm (offline / stale)
 │     ├── S-02 Board — enter the door code (keypad)        ── [S-02b Scan instead]
-│     │      └── S-03 Ticket — Pending offline / Paid only after server confirmation
-│     │             └── S-04 In transit — ETA to factory · SOS
-│     ├── S-07 Balance & rides — confirmed funds · pending amounts · top-up policy unknown
-│     └── S-08 Map & route — optional geographic map; timestamped position
+│     │      └── S-03 Ticket — Pending offline / mock Paid; real Paid requires server confirmation
+│     │             └── Explicit ticket CTA → S-04 In transit; no paid-ticket root auto-timer
+│     ├── S-07 Balance — confirmed Tk · pending amounts · top-up policy unknown
+│     │      └── A-05 Sign out → Stay/header BACK (no history loop) / confirm → A-01, auth state only
+│     └── S-08 Map & route — attributed OpenStreetMap; illustrative positions, not GPS
 │           └── S-08b Stops — retained schematic; same context and Home return
 │
 ├── SOS (persistent bottom zone on S-01 and S-04)
@@ -49,43 +54,45 @@ Worker remains primary, gate officer secondary and driver tertiary (DL-09). Code
 
 Target flow [D], with illustrative times/bus numbers [A]. Payment and admission are separate: offline/manual admission requires client approval; a code, QR or colour is not proof of presence, occupancy, attendance or payment. One unique transaction ID per logical request is reused across typed/QR input and retries, with server idempotence (DL-18).
 
-**Current entry addition [D, DL-22; not historical Phase 3 delivery]:** S-09 language -> A-01 Sign in -> A-04 simulated check -> existing S-01 only on success. A-02 Sign-in help returns to A-01 without a reset claim. A-03 Demo credential chooser and A-04 Checking are top-level prototype helper screens, not native input or worker services. Empty input remains on A-01; generic invalid, offline first/new-device, throttled and service-error results use A-01e without account access. Preserve English default and immediate Bangla. Existing S-10/S-11/S-12 IDs are occupied and must not be reassigned to authentication.
+**Current entry addition [D, DL-22; not historical Phase 3 delivery]:** S-09 language -> A-01 Sign in -> A-04 simulated check -> existing S-01 only on valid sample success. A-02 help returns to A-01 without a reset claim. A-03 fixed demo chooser and A-04 Checking are top-level helper frames, not native input or auth services. Empty/partial input stays on A-01; negative checks reach A-01e without account access. Offline/service/throttled branches have seeded saved-action evidence, not visible chooser selectors. Preserve English default and native Bangla. Six auth source frames and their low-fi references are mapped in §9; S-10/S-11/S-12 IDs are not reassigned.
 
-N-01 entry below assumes an authorised worker; otherwise route through A-01 before personal data. Authentication is not required at each boarding. Offline first/new-device login is denied; bounded previously authorised cached access requires approved policy. Logout on existing S-07 and unauthenticated emergency-contact guidance are targets pending parent verification; contacts are unknown. Remove local account access while preserving pending request ownership, never exposing/submitting another worker's queue. Live session enforcement is not implemented by Figma.
+N-01 is a notification target for an authorised worker; otherwise route through A-01 before personal data. Authentication is not required at each boarding. Offline first/new-device login is denied; bounded cached access requires approved policy. Current S-07 opens A-05 `204:1681`: Stay `204:1705` and header `204:1710` use `BACK`; the checked Balance-to-confirmation path then returns Home without reopening sign-out. Confirm clears auth demo state only. Real logout must isolate account data while preserving payment ownership; no live sessions or verified emergency contacts exist here.
 
-```
+```text
 N-01 Alert (push; SMS conditional)  "Route 3 · Bus 12 · 15 min · leave now" [fresh data required]
-  → S-01 Home · Coming              hero: 15 · bus 12 · stop · Updated 06:12 [no stale live countdown]
+  → S-01 Home · Coming              illustrative status; current 27:9 demo advances to Arrived after 4 s
       ├─ [Delayed]                   "Buses 15 min late" · new leave time · same layout
       ├─ [Offline / stale]           banner "Updated 06:20" · no live update; SMS only if service works
       ├─ [Full]                      "Bus 12 full — take the next one" · next bus/ETA only if known
       └─ [Arrived]                   "Bus 12 is here" · primary CTA: BOARD
-  → S-02 Board · keypad             door code · 3-column, 4-row keypad target · auto-submit 4th digit (DL-15)
-      ├─ [Scan instead]  S-02b       camera + torch · reads the door QR · fills the 4 digits · back to S-02
-        ├─ [Invalid / expired code]    explicit error · after 3: assistance target, not guaranteed admission
+  → S-02 Board · keypad             four-digit demo input; 7319 is the valid sample
+      ├─ [Scan instead]  S-02b       simulated scan/torch; Type instead returns to the keypad
+        ├─ [Invalid 4th digit]         increments failures; third rejected attempt → assistance, no admission grant
+        ├─ [Wrong full input]          next digit starts a fresh code; failure count retained
+        ├─ [Assistance Retry / Back]   clears active boarding slots/length and failures
         ├─ [No current code data]      validation unavailable; do not blame the user's digits
         ├─ [Low balance]               warning; grace/manual admission require client approval (DL-12)
-        └─ [Back]                      before request: none submitted; afterwards: request persists, not cancelled
-      → S-03 Ticket                      offline Pending · bus/time/request ID · last-confirmed funds separate
-        └─ [Server confirms]           Paid 10 Tk · settled funds · same ID on retry; colour is recognition only
-      → S-04 In transit                  target CTA · timestamped ETA to Unit 2 · next stop · SOS zone
-      → arrival                          connected retry with same ID; only server confirmation settles payment
+        └─ [Back]                      Offline Home if network/offline; otherwise Arrived Home
+      → S-03 Ticket                      offline Pending; confirmed Tk separate; Check status may remain offline
+        └─ [Online demo]               Paid 10 Tk mock receipt; no real debit or admission proof
+      → explicit ticket CTA → S-04       no root auto-timer on paid 29:551; ETA · next stop · SOS
+      → production reconciliation       same request ID required; only server confirmation settles payment
 ```
 
 Deliberately not modelled: no-bus-today empty state (P2), return commute (A-10), HR set-up (Should, not committed), payment history (P2).
 
-**SOS flow target (second prototype flow; delivered behaviour requires parent QA)**
+**SOS demo flow (bounded coordinator replay; production delivery remains unimplemented)**
 
-```
-S-01 or S-04  →  tap SOS → S-05 five-second demo countdown (explicit Cancel returns; no real alert)
-        →  S-06 Sending: transmission attempt, one alert ID; bus/time/available location with age
-          ├─ Not sent: failed/unavailable channel; retry uses same alert ID
-          ├─ Delivered: configured channel confirms delivery, not human response
-          └─ Acknowledged: gate responds, not a promise of help arrival
-        →  call/I'm safe now/Back targets; cancellation is a request, not recall of a delivered alert
+```text
+Home / ticket / Transit / Map / Stops / proofs → tap SOS → S-05 countdown (5 s; explicit Cancel; no hold)
+        →  Sending demo (1.5 s); Cancel preserves origin
+          ├─ Not sent demo → Online retry · demo simulates network recovery
+          ├─ Delivered demo, distinct from human acknowledgement
+          └─ Acknowledged demo → cancellation review preserves the prior delivery state
+        →  Keep active / Confirm cancellation / review / origin return; no real call, GPS or SMS
 ```
 
-Current demo evidence supplied by the parent: `30:511` has a five-second `AFTER_TIMEOUT` to Sending `138:1024`; Cancel `30:526` uses `BACK`; duplicate `119:1007` is hidden. Starts remain Language `30:642` and In transit `29:646`. The historical two-second hold with early-release cancellation remains a proposed production gesture, not implemented pointer behavior. No three-second delivery guarantee. Staffing, push/SMS/call integration and escalation policy remain unconfirmed [A-3, A-5]. Reuse the same unique alert ID across channel fallback/retries for idempotent handling. Local feedback is not proof of remote delivery (DL-18).
+**Current demo entries and evidence:** four starts: Language/boarding `30:642`, Transit/SOS `29:646`, Full `27:229`, Offline `27:322`. These are scenario entries, not production auth bypasses. API timeouts use seconds: Home `27:9` = 4; Checking `169:4045` = 0.9; result `169:4049` = 60 (throttle release only); SOS `30:511` = 5; Sending `138:1024` = 1.5; paid `29:551` has no root auto-timer. Coordinator reports ten Balance/Map/Stops origin-return checks and countdown Cancel from all twelve current origins, plus safety recovery and acknowledgement review. This bounded PASS supersedes older browser-blocked notes, not the residual device, language, accessibility and real-service gates. Alert-ID idempotence, staffing, channels and escalation remain production requirements (DL-18).
 
 ## 3. Screen inventory
 
@@ -105,9 +112,9 @@ Committed = intended coverage in this specification, **not evidence that a frame
 | Acknowledged | `138:1074` | Band E: S-06c | Explicit simulated gate acknowledgement, not a help-arrival promise. |
 | Confirm cancellation / update logged | `138:1099` / `138:1124` | Band E: S-06d / S-06e | Confirm the update; preserve the log and origin; do not imply the delivered alert was recalled. |
 | No verified contact | `138:1149` | Band E: S-06f | Recovery when no configured contact exists; no real call or invented security number. |
-| Worker sign in | `164:1944` | Band F: A-01 Worker sign in, source `164:1944` | Worker ID, masked password, personal-phone session choice, saved sign-in and help. Preserve requested task and locale; no false success offline. Authentication handlers remain under active implementation. |
+| Worker sign in | `164:1944` | Band F `169:3787`, sketch `169:3790` | Fixed sample input, Show/Hide, personal-phone choice, saved entry and help; bounded coordinator browser PASS, not real authentication. |
 
-Parent-reported additions: A-02 help `169:4037`, A-03 demo credentials `169:4041`, A-04 checking `169:4045`, and A-01e result `169:4049`. Their existence does not certify authentication behavior or matching low-fi/export coverage; that work remains with the authentication owner.
+Current six-frame auth inventory: A-01 `164:1944`, A-02 help `169:4037`, A-03 fixed demo chooser `169:4041`, A-04 checking `169:4045`, A-01e result `169:4049`, A-05 sign-out `204:1681`. All are top-level frames, not overlays/native auth. Band F `169:3787` and reconciliation board `211:1815` map all six sources in §9; static coverage is separate from the coordinator's bounded browser evidence and export freshness.
 
 The current S-05 frame (`30:511`) is named **demo countdown**. The active safety workstream specifies a five-second simulated countdown with cancellation; this supersedes the historical two-second hold/overlay descriptions below **for the prototype demonstration only**. Native activation behavior remains a target requiring validation. Existence of the above frames is verified by inventory; their end-to-end reachability, translations and event semantics are not certified by this table.
 
@@ -118,14 +125,14 @@ The original inventory below remains the base-screen rationale. Resolve any disa
 | **S-09** | Language · first launch | Immediate language/audio access | US-1, US-7 · P-3 (C4) | Choose without mandatory HR set-up | বাংলা/audio switch or Continue in English | — | English pre-selected; Bangla/audio option | Default · Bangla/audio chosen | → A-01 |
 | **A-01** | Sign in | Gate personalised Home | US-7 · DL-22 | Access only my account | Sign in | Show/Hide · optional saved credentials · help · language | Worker ID · password · unchecked Keep signed in, personal phones only | Empty · generic invalid · offline · throttled · service error; success simulated | → S-01 only on success · A-02; A-03/A-04 helper screens |
 | **A-02** | Sign-in help | Explain approved setup/recovery dependency | US-7 · U-15 | Recover access without an ID-only reset | Back to sign in | Language; emergency-contact guidance target, details unknown | HR-assisted identity verification; final password private | Guidance only; no verified identity/reset claim | → A-01 |
-| **A-03** | Demo credential chooser | Simulate optional OS credential assistance | US-7 · U-10 | Explore saved-credential path | Choose illustrative account | Cancel | Demo-only sample ID GT2-04711; no actual credentials | Prototype-only helper screen; no native autofill/storage | → A-01 |
-| **A-04** | Checking | Simulate a submitted sign-in check | US-7 · DL-22 | See an attempt, not premature access | Wait for simulated result | Return on failure | No worker data before success | Prototype-only helper screen; no server authentication | → S-01 on simulated success; otherwise A-01e |
-| **A-01e** | Sign-in result | Explain denied or unavailable sign-in | US-7 · DL-22 | Recover without false account access | Back to sign in | Help · language | One generic-invalid, offline, service-unavailable or throttled result | Password cleared; ID retained; no account access | → A-01 · A-02 |
-| **A-05** | Confirm sign out | Avoid accidental loss of session | US-7 · DL-22 | Know internet is needed to sign in again | Stay signed in | Sign out · language | Pending payments remain bound to their worker account | Cancel preserves session; confirm clears auth demo state only | → S-07 on cancel · A-01 on confirm |
+| **A-03** | Demo credential chooser | Simulate optional OS credential assistance | US-7 · U-10 | Explore sample input | Fill ID / Fill password / Use saved / Use incorrect | Cancel | Demo-only sample ID GT2-04711; no actual credentials | Fixed top-level helper; no native autofill/storage; no service-scenario selector | → A-01 |
+| **A-04** | Checking | Simulate a submitted sign-in check | US-7 · DL-22 | See an attempt, not premature access | Wait 0.9 s | Cancel to sign in | No worker data before valid sample success | Top-level helper; no server authentication | → S-01 on valid sample success; otherwise A-01e |
+| **A-01e** | Sign-in result | Explain denied or unavailable sign-in | US-7 · DL-22 | Recover without false account access | Back to sign in | Help · language | Generic-invalid, offline, service-unavailable or throttled result; service cases seeded | Password cleared; ID retained; 60 s only releases simulated throttle, no access | → A-01 · A-02 |
+| **A-05** | Confirm sign out | Avoid accidental loss of session | US-7 · DL-22 | Know internet is needed to sign in again | Stay signed in | Sign out · language | Production pending-payment ownership remains required | Stay/header use BACK without history loop; confirm clears auth demo state only | → prior screen via BACK · A-01 on confirm |
 | **S-01** | Home · My bus (waiting) | Tell her, at arm's length, when the bus comes and what to do | US-1, US-2 · P-1, P-3, P-5 (C1, C8, C9) | Certainty about when; what to do if full | Board (when Arrived) | Balance · Route · SOS demo · language | Route + stop · next bus number · minutes · state word · updated time · confirmed Tk | Coming · Full → next · Arrived · Delayed · stale/offline banner | → S-02 · S-07 · S-08 · S-05 |
 | **S-02** | Board · door code | Request payment without a required camera | US-3 · P-2 (C2) | Low-effort entry; speed untested | Type 4 digits (auto-submit target) | Scan instead · Back | Expected bus · 4 slots · keypad | Empty · partial · invalid/expired · unavailable validation · 3 failures → assistance | → S-03 · S-02b · S-01 |
 | **S-02b** | Scan instead (approved optional input) | Alternative for a usable camera | US-3 · P-2 (C2) | Choose input method | Point at door QR | Torch · Type instead | Viewfinder · target instruction | Scanning · found → same digits/request · failure → keypad | → S-02 |
-| **S-03** | Ticket / payment status | Distinguish pending request from confirmed payment | US-3, US-5 · P-2 (C2, C10) | Know payment state, not implied admission | I'm on the bus (target; not admission authority) | View balance | Bus · time · transaction ID · pending vs confirmed funds; colour not proof | Pending offline · Paid only when server-confirmed; policy unapproved | → S-04 |
+| **S-03** | Ticket / payment status | Distinguish pending request from confirmed payment | US-3, US-5 · P-2 (C2, C10) | Know payment state, not implied admission | Explicit ticket CTA to Transit; no paid root auto-timer | Balance / pending-status recovery | Bus · time · request ID · pending vs confirmed Tk; colour not proof | Pending offline · mock Paid in demo; production needs server confirmation; policy unapproved | → S-04 |
 | **S-04** | In transit | Reassure; keep SOS one thumb away | US-4 · P-4 | Know arrival; reach help | (none — passive) | SOS demo · Back to Home | Bus · next stop · ETA to factory · updated time | Moving · stale · arriving | → S-05 · S-01 |
 | **S-05** | SOS · demo countdown | Expose an explicit cancellation opportunity; effectiveness untested | US-4 · P-4 (C3) | Deliberate request | Five-second simulated countdown | Tap Cancel to return | Progress · no real call, SMS or location sent | Countdown · cancelled locally · Sending demo | → S-06 |
 | **S-06** | SOS · delivery status | Honest quiet feedback, not guaranteed help | US-4, US-6 · P-4 (C3) | Distinguish attempt, delivery, acknowledgement | Call security (service unconfirmed) | I'm safe now (request) · Back | Alert ID · bus · time · available location/age · delivery evidence | Sending · Not sent · Delivered · Acknowledged; cancellation request separate | → back |
@@ -153,13 +160,13 @@ Target base 360 × 800 with auto-layout reflow at 320–430 px: **top bar**, **c
 **S-02 Board · door code**
 - Top bar: back · "Bus 12 · enter the door code".
 - Content: illustration slot showing where the code is (door card, without printing the real digits); four large digit slots; keypad 3 × 4 — digits 1–9, an empty cell, 0, backspace — with keys ≥ 72 px tall; auto-submits on the fourth digit.
-- Bottom zone: retain approved optional "Scan instead"; existing Back target returns to S-01. Screen duration and SOS reachability are parent QA checks, not a seconds-long-use assumption.
-- Error target: distinguish invalid/expired code from unavailable validation; third failure offers assistance. "Show this screen to the driver" does not authorise manual admission (DL-16).
+- Bottom zone: retain approved optional "Scan instead"; code/error/assistance Back preserves Offline Home when `network/offline`, otherwise Arrived. This return was included in the coordinator's bounded replay.
+- Current invalid fourth-digit submission increments failures; the third opens assistance. A full rejected code accepts a new first digit while retaining failures; assistance Retry/Back clears active slots, length and count. Invalid/expired versus unavailable validation remains a production distinction; assistance never authorises admission (DL-16).
 
 **S-03 Ticket**
 - Preserve approved ticket treatment; bus/time and explicit payment status are targets. Daily colour is recognition only; driver readability is untested. A success mark must not represent an offline request as paid.
 - Offline **Pending** and pending amount stay separate from last-confirmed Tk. Production **Paid 10 Tk** and settled balance require server confirmation; the prototype uses a mock receipt, not a real debit. One transaction ID across retries. Grace/manual admission require client approval.
-- Existing "I'm on the bus" target remains toward S-04, not proof of admission. Historical 20 s auto-advance proposal is unverified and must not hide Pending or imply successful boarding/payment; parent owns prototype reconciliation.
+- The explicit ticket CTA opens S-04, not proof of admission. Paid `29:551` has no root auto-timer; the historical 20 s proposal is SUPERSEDED for the current demo. Pending/status recovery must not imply successful payment.
 
 **S-04 In transit**
 - Top: bus number + "to GreenTex Unit 2".
@@ -170,22 +177,22 @@ Target base 360 × 800 with auto-layout reflow at 320–430 px: **top bar**, **c
 - Historical Phase 3 target: an overlay with a two-second hold and early-release cancellation. Current S-05 is a top-level demo-countdown screen with a five-second timeout and explicit Cancel; it does not implement that hold/release gesture.
 - S-06 target: quiet **Sending / Not sent / Delivered / Acknowledged** with bus, time, alert ID and available location/age. Delivery/location-sharing claims require corresponding evidence; no help-arrival promise. Retain Call/I'm safe now/Back targets subject to approved receiving/cancellation policy.
 
-**S-02b Scan instead (approved optional input)** — target "Scan the door code" viewfinder; "Point at the QR beside the 4-digit code"; Torch and Type instead. One-tap keypad recovery and same-code fill are targets, not tested behaviour. Both input methods use one payment request and retry ID (C2, DL-18).
+**S-02b Scan instead (approved optional input)** — simulated viewfinder, Torch and Type instead. Coordinator browser PASS covers torch On/Off, scan-to-paid, Type instead/header Back and online/offline returns. No real camera/torch is used. Same payment identity across inputs/retries remains a service requirement, not proved by navigation (C2, DL-18).
 
 **N-01 Alert copy proposals [A/D]** — Leave now: "GreenCommute · Route 3 · Bus 12 · 15 min · leave now" · Delayed: "GreenCommute · Route 3 buses ~15 min late · leave by 06:15" · Full: "GreenCommute · Bus 12 full · next bus 14 in 12 min" · Cancelled: "GreenCommute · Bus 12 cancelled · take bus 14 · 12 min" · Arrived: "GreenCommute · Bus 12 is at Board Bazar · board now". Use these values only with fresh supporting data. Low-balance guidance must not name an unapproved top-up method. SOS wording follows actual delivery state (DL-18). Equivalent SMS is conditional; encoding, translated length, segment count, cost and service integration are **unverified**, not a guaranteed single segment.
 
 **S-07 Balance** — confirmed Tk plus distinct pending amounts and recent request/payment rows; proposed low-funds warning. The daily 10 Tk fee does not establish a ride entitlement. Top-up method [A-7], warning threshold and historical grace [A-8] remain client decisions, not available credit or guaranteed admission.
 
-**S-08 Map & route / S-08b Stops** — later user-approved extension (DL-23), keeping status-first Home. Existing Route / View map entries open a geographic map with selected bus, boarding stop and freshness; Map/Stops preserves context, and Back/Home returns to the originating Home state. SOS remains available. The stop schematic is retained as S-08b. Basemap attribution and illustrative route/position disclosure are visible; live GPS integration and sponsor acceptance remain unconfirmed.
+**S-08 Map & route / S-08b Stops** — later user-approved extension (DL-23), keeping status-first Home. Route / View map opens an attributed OpenStreetMap basemap; bus/stop positions and route are illustrative, not GPS. Map/Stops retains context and Back returns to the originating Home; SOS remains available. The coordinator's ten return checks cover Balance and Map/Stops from Arrived, Full, Offline and 320/412 px Home proofs. This is bounded browser evidence, not real telemetry or sponsor approval.
 
-**S-09 Language** — preserve approved mark and English pre-selection; বাংলা/audio switch acts immediately, without mandatory HR set-up. Continue targets A-01 before personalised Home. Choice/Continue behaviour and translated/audio coverage are parent verification targets, not claims of working localisation.
+**S-09 Language** — preserve approved mark and English pre-selection; বাংলা access precedes A-01. The shared chip is 116 x 56 px with two fixed EN/বাংলা segments; EN minimum is now 48 px. Coordinator replay covers Bangla first launch through sample sign-in, boarding, ticket, Transit and SOS Cancel, then EN restoration; not every screen, translation, audio or assistive-technology combination.
 
 **A-01 Sign in [D, current DL-22 wireframe target]**
 - Preserve existing identity, fonts and language access; labelled Worker ID and masked Password fields, Show/Hide, primary Sign in, optional OS-saved credentials and unchecked Keep signed in for personal phones. Sample GT2-04711 is illustrative, not a real credential; no actual password belongs in the prototype.
 - Reserve error space and keyboard-aware scrolling at 360/320 px; targets ≥ 56 px, no overlap. Missing fields get local feedback on submit, not premature typing errors. Wrong password, nonexistent or disabled account share one generic failure; offline, server-provided retry time and service-unavailable states are distinct and cannot open Home.
 - Preserve ID for correction; clear password after failure or leaving sign-in. Production must allow paste/autofill; A-03 merely simulates a chooser, A-04 merely simulates checking. No role picker, public signup or dashboard.
 
-**A-02 Sign-in help [D, current target]** — direct Back to A-01, immediate language access and concise HR-assisted setup/recovery guidance. Identity checks and support channels remain U-15. Only a strong, short-lived, single-use setup/reset grant may permit password-setting; HR never sees the final password. Do not simulate a completed reset, invent a number or equate login help with emergency dispatch. Unauthenticated emergency-contact guidance and S-07 logout require parent verification.
+**A-02 Sign-in help [D, current target]** — direct Back to A-01, immediate language access and concise HR-assisted setup/recovery guidance. Identity checks and support channels remain U-15. Only a strong, short-lived, single-use setup/reset grant may permit password-setting; HR never sees the final password. Help/Back and sign-out have bounded coordinator replay, not a completed reset, verified contact or emergency dispatch.
 
 **R-01 Rejected concept: map-first Home** — historical full-screen-map alternative. Rationale [I]: HR reports map-comprehension difficulty [E·03], while device/data constraints [E·01, E·02] favour testing a lighter status-first approach. No measured map-loading failure, pin-visibility comparison or Full-state frequency is available. Rejecting map-first Home does not reject the optional geographic S-08 addition; DL-23 retains the schematic as S-08b Stops.
 
@@ -202,7 +209,7 @@ Target base 360 × 800 with auto-layout reflow at 320–430 px: **top bar**, **c
 | US-7 Worker sign-in (current addition) | Account access/typing risks [I], not a measured Phase 2 problem | DL-22 and current external desk research; issuance, device support and sessions unresolved | S-09 -> A-01 -> S-01; A-02 help; A-03/A-04 prototype helpers; A-01e result; S-07 -> A-05 sign-out confirmation |
 | Stakeholder (map, English) | C1 · C4 | Optional geographic Map/Stops; English default and immediate Bangla/audio | S-08 · S-08b · S-09 · language/audio access |
 
-Each specified screen has a rationale above, not delivery evidence. DL-23 and Phase 4 notes record the scoped Map/Stops implementation checks. Sponsor acceptance, real telemetry and browser/Android runtime validation are separate and remain unconfirmed here.
+Each specified screen has a rationale above. DL-23, Phase 4 and the coordinator snapshot record scoped implementation/browser evidence; sponsor acceptance, real telemetry, native Android and all-device/locale validation remain separate gates.
 
 ## 6. Content plan — illustrative copy for Phase 4
 
@@ -230,11 +237,11 @@ Each specified screen has a rationale above, not delivery evidence. DL-23 and Ph
 
 **Source-derived design targets [D], not study findings.** Status-first responds to HR's examples, "Bus is 10 minutes away" and "Bus is full, take the next one". Full-state frequency and next-bus availability are unknown. Keep code plus optional QR; ticket colour is not proof; payment/SOS follow DL-18. Gate operations and SMS are unconfirmed. Show cache age; preserve English default, immediate Bangla/audio and optional Map/Stops (later user approval, DL-23).
 
-**Flow, sitemap, inventory.** Sections 1–3 are targets; historical Figma page references are not verified current contents.
+**Flow, sitemap, inventory.** Sections 1–3 incorporate supplied current demo routes while retaining production targets; §9 records all six auth low-fi source mappings. Supporting exports require the parent's settled-file refresh.
 
 **Content.** Section 6 supplies concrete illustrative values, not real worker/service data. Bangla strings and audio need language review and parent coverage checks.
 
-**Interaction targets and history.** No swipe-only gestures; historical targets ≥ 56 px, keypad keys ≥ 72 px tall, ≥ 12 px apart. The original SOS hold of about two seconds with early-release cancellation is a production target only; the demo uses five seconds and explicit Cancel. Four-digit auto-submit and QR fill must share a request ID; Back/reopen must not submit a draft or create another charge (brief §4.3 FARE-1–5). Pending must stay distinguishable from Paid. Historical ticket timing must not conceal payment state. Timestamp updates and use actionable errors. Parent owns actual prototype/reachability testing.
+**Interaction targets and history.** No swipe-only gestures; historical targets ≥ 56 px, keypad keys ≥ 72 px tall, ≥ 12 px apart. The original SOS hold remains an unverified production proposal; current demo uses five seconds and explicit Cancel. Paid ticket uses an explicit CTA, not a root timer. Four-digit auto-submit and QR fill must share a payment identity; Back/reopen must not create a charge (brief §4.3 FARE-1–5). Coordinator replay covers specified keypad/recovery paths, not backend continuity, native gestures or field usability.
 
 **Accessibility requirements.** Text ≥ 7:1 against its background; higher on the hero where the tint allows; state never by colour alone (icon + word + position + tint); body ≥ 15 px, hero digits ≥ 88 px (DL-17); Bangla-capable typeface with heavy weights; reading order top-down matches visual order; language switch on every core screen; alt text for every icon and the mark (to be listed in Phase 5).
 

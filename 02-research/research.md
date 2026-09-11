@@ -1,6 +1,8 @@
 # GreenCommute — Phase 2 · Research & Validation
 
-Phase 2 window 17:40–18:20 · Evidence base: client-pack Items 01–04. This is scenario synthesis, not a real user study. No worker interviews, measured frequencies or test results were collected here. Personas, feelings and journey values are explicitly illustrative; current qualifications are recorded in DECISIONS DL-18–20.
+Phase 2 window 17:40–18:20 · Evidence base: client-pack Items 01–04. This is scenario synthesis, not a real user study. No worker interviews, measured frequencies or test results were collected here. Personas, feelings and journey values are explicitly illustrative; current qualifications are recorded in [DECISIONS.md](../DECISIONS.md), DL-18–23.
+
+**Current prototype evidence, 11 September 2026:** the [22:38 Dhaka coordinator snapshot](../review/prototype-repair-coordination.md) reports bounded browser PASS for the listed sample-auth, boarding, route, offline and SOS journeys. These are coordinator-supplied findings, not field research or tests performed by this documentation pass. Participant comprehension, representative devices, keyboard/TalkBack, anonymous sharing and real services remain separate gates.
 
 **Tags.** `[E·01]` Anisur's email · `[E·02]` junior's kick-off notes · `[E·03]` Monira Khatun, HR Supervisor, voice note · `[E·04]` SMS · `[I]` inference · `[A]` assumption — unverified · `[D]` design implication.
 
@@ -119,14 +121,14 @@ Illustrative simulation [A/D]: Shahida, Route 3, monsoon, first bus 15 minutes l
 
 | Stage | Time | Simulated action [A] | Synthetic thought / feeling [A/I] | Pain | Current touchpoint: unknown unless tagged | Target opportunity [D] | State / screen |
 |---|---|---|---|---|---|---|---|
-| 0 Evening before | 17:30 at the factory | Proposed factory Wi-Fi sync; Wi-Fi availability is sourced, this use is not | — | — | Unknown | Cache available route/code data; last-confirmed balance plus pending amounts; proposed warning at ≤ 3 rides | Sync target · Balance |
+| 0 Evening before | 17:30 at the factory | Proposed factory Wi-Fi sync; Wi-Fi availability is sourced, this use is not | — | — | Unknown | Cache available route/code data; confirmed Tk plus separate pending amounts; warning threshold requires approval, not a ride conversion | Sync target · Balance |
 | 1 Wake | 05:20, dark, heavy rain | Gets ready; checks for timing information | "Will it come? Should I go early?" | Uncertainty inferred from reported waiting [I] | Word of mouth [A] | If fresh data supports it: push delay alert; SMS only if service confirmed. Sample: "Route 3 · buses running 15 min late · leave by 06:15" | Alert target |
 | 2 Decide to leave | 06:10 | Opens app or supported SMS | "I can wait inside 5 more minutes" | Early departure could increase exposed waiting [I] | Unknown | Sample fresh Home status: **Next bus 12 · 35 min · Delayed**; updated 06:09. Walking time remains unknown | Waiting target (Delayed) |
 | 3 At the stop | 06:30, rain, crowd forming | Seeks shelter [A], checks phone; wet screens reported [E·02] | "Is it near?" | Wet/dim screen [E·02]; mobile coverage unknown | Unknown | Timestamped cache; no live countdown from stale data. **Coming · 15 min** only with an appropriate update; SMS conditional | Waiting target (Coming/stale) |
 | 4 Bus arrives full | 06:45 (15 min late) | Sees bus stop briefly and leave | "Not again — do I wait or walk?" | Full/next-bus information requested [E·03] | Driver shouting [A] | **Full — take the next one · 12 min** only if next eligible bus/ETA is supplied; otherwise disclose no update | Waiting target (Full) |
 | 5 Next bus | 06:57 | Bus 14 arrives; attempts code entry | "Quick, before the crowd" | Pushing crowd and QR risk [E·03] | Unknown | Type four digits or optional scan; create one 10 Tk request with a unique transaction ID; offline **Pending** | Boarding input target |
 | 6 Board | 06:58 | Simulated admission, conditional on approved policy | "Done." | Wet screen [E·02]; one-handed use [I] | Unknown | Ticket shows **Pending** offline; **Paid 10 Tk** only after server confirmation. Colour is recognition, not proof. Grace/manual admission require client approval | Payment-status target |
-| 7 In transit | 07:00–07:50 | Sits or stands; phone away | "I'll make it by 8" — or, if something feels wrong, fear | Safety concern [E·01], not a measured incident | Emergency contacts unknown | Timestamped ETA; quiet SOS hold target. **Sending / Not sent / Delivered / Acknowledged** follow evidence; one alert ID, no delivery-time guarantee | In-transit · SOS targets |
+| 7 In transit | 07:00–07:50 | Sits or stands; phone away | "I'll make it by 8" — or, if something feels wrong, fear | Safety concern [E·01], not a measured incident | Emergency contacts unknown | Timestamped ETA; current SOS demo uses five seconds and explicit Cancel, no hold required. Production **Sending / Not sent / Delivered / Acknowledged** require evidence; one alert ID, no delivery-time guarantee | In-transit · SOS targets |
 | 8 Arrive | 07:55 | Enters factory; attempts Wi-Fi reconnection | Relief [I] | Lateness remains possible [I] | Gate [A] | Retry pending requests with the same IDs; server confirmation settles payment; connection alone does not | Reconciliation target |
 
 **Simulated emotional curve [I/A]:** uncertainty → informed waiting → anxiety at a full bus → relief on boarding → calm or fear in transit → relief on arrival. This is a design hypothesis, not measured emotion or evidence that the product reduces anxiety.
@@ -140,10 +142,10 @@ Illustrative simulation [A/D]: Shahida, Route 3, monsoon, first bus 15 minutes l
 | "Stand in the rain for hours waiting" [E·01] | Uncertainty is one reported pain; capacity is unknown | Useful arrival information with honest uncertainty | Home number + state + freshness; alerts carry equivalent information |
 | "Big text… 'Bus is 10 minutes away'" [E·03] | HR provides example language, not usability-tested copy | Readable status | Large digits and short labels are targets; Coming / Full / Arrived / Delayed |
 | "Bus is full, take the next one" [E·03] | Full merits explicit handling; frequency unmeasured | Know the available next action | Show next bus/ETA only if known; route eligibility remains U-11 |
-| "Do not understand live maps" [E·03] vs sponsor map demand [E·02] | Worker-focused status and geographic context need not compete | Status primary, optional Map/Stops | Later user-approved geographic extension retains the schematic as Stops (DL-23); this is not new research or confirmed sponsor acceptance |
+| "Do not understand live maps" [E·03] vs sponsor map demand [E·02] | Worker-focused status and geographic context need not compete | Status primary, optional Map/Stops | Current attributed OpenStreetMap basemap retains the schematic as Stops (DL-23); positions are illustrative, not GPS, new research or confirmed sponsor acceptance |
 | "Cannot read properly" [E·01]; English default [E·01] | Reading burden should be reduced, not assumed eliminated | Immediate language/audio access | Retain English default and approved বাংলা/audio switch; translation, numeral and comprehension checks pending |
 | Broken, dim screens [E·02] | Contrast and size are survival | See it through cracks and dimness | ≥ 7:1 text, ≥ 12:1 hero; light theme (DL-11); targets away from edges |
-| Rain and sweat [E·02]; pushing crowd [E·03] | Input must be forgiving and one-handed | Act with a thumb, once | Bottom thumb zone; ≥ 56 px targets; taps only; hold-to-confirm for SOS |
+| Rain and sweat [E·02]; pushing crowd [E·03] | Input must be forgiving and one-handed | Act with a thumb, once | Bottom thumb zone; large tap targets; current SOS demo is a five-second countdown with explicit Cancel. Native activation remains unverified |
 | QR "won't work"; half the cameras scratched [E·02, E·03] | Camera cannot be on the critical path | Board without a camera | Door code typed at the kerb; scan as optional shortcut; ticket screen (DL-02) |
 | Wi-Fi does not reach the stop; data expensive [E·01, E·02] | Interruption is a design risk, not a known daily outage | Honest cached status | Timestamp cache; small connected updates; SMS conditional on U-7 (DL-05) |
 | "Emailing the police is useless… alert our factory security gate with the specific bus number" [E·03]; "if they feel unsafe" [E·01] | Gate recipient explicit; dispatch staffing/authority unverified | Discreet request with truthful progress | Sending / Not sent / Delivered / Acknowledged; same alert ID on retry; no guaranteed response (DL-18) |
@@ -165,21 +167,21 @@ Illustrative simulation [A/D]: Shahida, Route 3, monsoon, first bus 15 minutes l
 
 - **US-2 · Leave-home and delay alert [D].** As a worker leaving before dawn, I want fresh timing/delay information to reduce unnecessary waiting. *Target:* configurable lead time; timestamped status; sample "Route 3 · buses 15 min late · leave by 06:15" only when supported by service data. An equivalent SMS variant is conditional on coverage, cost and integration; no delivery claim.
 - **US-3 · Board and pay [D].** As a worker in a crowd, I want typed code entry or optional QR for one cashless payment request. *Target:* ≤ 2 taps + 4 digits; scan fills the same code. Offline **Pending** remains separate from last-confirmed balance; **Paid 10 Tk** requires server confirmation. Persist/reuse one unique transaction ID on retries, with server idempotence. Daily colour is recognition, not presence/payment proof; admission policy remains open.
-- **US-4 · SOS [D].** As a worker who feels unsafe, I want a discreet help request toward factory security with my bus number and truthful status. *Target:* bottom-zone hold ~2 s; no sound; **Sending / Not sent / Delivered / Acknowledged** only on corresponding evidence, one alert ID across retries/channels. No three-second guarantee or promise of help; cancellation does not recall a delivered alert.
+- **US-4 · SOS [D].** As a worker who feels unsafe, I want a discreet help request toward factory security with my bus number and truthful status. *Current demo:* tap starts a five-second countdown with explicit Cancel; no hold, actual call, GPS or SMS. `Online retry · demo` simulates connectivity. *Production target:* quiet activation and **Sending / Not sent / Delivered / Acknowledged** only on corresponding evidence, one alert ID across retries/channels. No delivery-time guarantee or promise of help; cancellation does not recall a delivered alert. Historical hold timing is not implemented or validated.
 - **US-6 · Gate officer (secondary) [D/A].** As the intended gate recipient, I want bus number, available location with age, worker identity, time and alert ID so I can acknowledge and follow the approved escalation policy. *Target:* worker-facing status reflects actual delivery/acknowledgement. Staffing, receiving tools and authority require client confirmation; no gate UI claimed delivered.
 
 ## 8. Design priorities
 
-**P0 — core design targets; delivery owned by parent QA**
+**P0 — core design targets; current prototype evidence is bounded as above**
 - Waiting state with four states — Coming / Full (+ next bus) / Arrived / Delayed — and last-updated time
 - Leave-home and delay alerts; SMS variant conditional on service confirmation
 - Boarding: typed code or approved optional QR → Pending offline / Paid only after server confirmation; one transaction ID on retry
-- SOS: quiet hold target; Sending / Not sent / Delivered / Acknowledged; one alert ID; receiving operations unconfirmed
+- SOS: five-second cancellable demo; Sending / Not sent / Delivered / Acknowledged; production activation and receiving operations unconfirmed
 - Offline cache + honest staleness
 - English default with the approved immediate বাংলা/audio switch; comprehension remains untested
 
 **P1 — important**
-- Balance as confirmed rides left plus pending amounts; low warning; grace/manual admission only if client-approved
+- Balance as confirmed Tk plus separate pending amounts; warning threshold, top-up, grace and re-entry require client approval. The daily 10 Tk fee does not turn 80 Tk into eight rides
 - Retain one-tap Map/Stops: geographic map plus the existing schematic, later approved by the user (DL-23); live integration and sponsor acceptance remain unconfirmed
 - Retain user-approved "Scan instead" input; not a first-cut feature
 - Retain approved Bangla audio option; alert wording/recording require validation
@@ -213,7 +215,7 @@ Illustrative simulation [A/D]: Shahida, Route 3, monsoon, first bus 15 minutes l
 
 ### 9.1 Scenario-based falsification plan [D] — not study results
 
-Desk checks below are proposed specification/state reviews, not observations of workers. Worker tasks require voluntary recruitment and safe simulation, not testing in a live boarding crowd or triggering real SOS alerts. Record assistance, errors, interpretation and recovery per participant; do not infer prevalence from this plan. **All outcomes remain unverified; no checks or worker sessions are claimed completed.**
+Desk checks below are proposed specification/state reviews, not observations of workers. Worker tasks require voluntary recruitment and safe simulation, not testing in a live boarding crowd or triggering real SOS alerts. Record assistance, errors, interpretation and recovery per participant; do not infer prevalence from this plan. **Participant and operational outcomes remain unverified; no worker sessions are claimed completed.** The separate coordinator's bounded prototype replay does not validate these research hypotheses or real-service requirements.
 
 | Uncertainty / scenario | Desk check to perform [D] | Proposed worker / operational test [D] | Falsifier and consequence [D]; outcome [A] |
 |---|---|---|---|
@@ -247,5 +249,5 @@ Shahida (inferred sewing-line role) and Kamal (inferred gate-officer role) remai
 
 **Recovery [D/A]:** HR-assisted identity verification, never reset by worker ID alone. A strong, securely issued, short-lived, single-use setup/reset grant permits only password-setting until completion; the worker's final password stays private from HR. No shared defaults. Finite/revocable sessions and logout must isolate account data while preserving pending payment ownership across accounts.
 
-**Unresolved:** U-1/U-2/U-7/U-10/U-15 cover ownership, typing/comprehension, connectivity, provider support, HR issuance/support, privacy, sessions and live-service approval. Test representative devices and safe worker sign-in/recovery tasks before rollout. A-01 sign-in, A-02 help and prototype-only A-03 chooser/A-04 checking are targets awaiting parent verification; no server authentication, secure storage or native autofill is implemented. Help returns to sign-in without a pretend reset; emergency-contact guidance requires client-verified details, not invented numbers.
+**Unresolved:** U-1/U-2/U-7/U-10/U-15 cover ownership, typing/comprehension, connectivity, provider support, HR issuance/support, privacy, sessions and live-service approval. Test representative devices and safe worker sign-in/recovery tasks before rollout. The coordinator reports bounded sample sign-in/sign-out replay in English and Bangla across A-01 sign-in, A-02 help, A-03 fixed demo chooser, A-04 checking, A-01e result and A-05 sign-out confirmation. These are top-level helper frames, not overlays, native inputs, server authentication, secure storage or autofill. The [auth repair snapshot](../review/final-auth-repair.md) separately records saved-action checks; offline/service/throttled outcomes require seeded state and lack visible chooser selectors. Help returns to sign-in without a pretend reset; emergency-contact guidance requires client-verified details, not invented numbers.
 
